@@ -24,13 +24,35 @@ function clearCanvas() {
 
 function drawPlayers() {
 	if (rightKey) {
-		player1.x += 10;
-	} else if (leftKey) {
-		player1.x -= 10;
+		//Collision with East wall
+		if(player1.x > 930){
+			player1.x += 0;
+			console.log('WALL!');
+		}else{
+			// If no collision continue
+			player1.x += 10;
+		}
+	} else if (leftKey) {		
+		if(player1.x < 0){
+			player1.x -= 0;
+			console.log('WALL!');
+		}else{
+			player1.x -= 10;
+		}
 	} else if (upKey){
-		player1.y -= 10;
+		if(player1.y < 0){
+			player1.y -= 0;
+			console.log('WALL!');
+		}else{
+			player1.y -= 10;
+		}
 	}	else if (downKey){
-		player1.y += 10;
+		if(player1.y > 525){
+			player1.y -= 0;
+			console.log('WALL!');
+		}else{
+			player1.y += 10;
+		}
 	}
 	ctx.fillRect(player1.x,player1.y,player1.width,player1.height);
 	ctx.fillRect(player2.x,player2.y,player2.width,player2.height);
@@ -43,15 +65,6 @@ function drawPlayers() {
 		&& player2.y <= (player1.y + 25)
 		) {
 		console.log('Player!');
-	}
-	// Did the player touch the wall?
-	if(
-		player1.x < 0
-		|| player1.y < 0
-		|| player1.x > 900
-		|| player1.y > 515
-		){
-		console.log('WALL!')
 	}
 }
 
