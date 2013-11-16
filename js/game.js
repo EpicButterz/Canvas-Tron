@@ -24,7 +24,7 @@ function reset(){
 		x: 20,
 		y: 20
 	};
-	ctx.clearRect(0,0,900,500);
+	ctx.clearRect(0,0,960,540);
 	rightKey = false;
 	leftKey = false;
 	upKey = false;
