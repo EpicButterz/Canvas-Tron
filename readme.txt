@@ -1,4 +1,5 @@
 To Do:
 
-Collisions with tails
+Fix bugs with collisions with tails
 Connected Tails
+Player scrores
