@@ -19,7 +19,7 @@ player2 = {
 };
 
 function clearCanvas() {
-	ctx.clearRect(0,0,960,540);
+	ctx.clearRect(player1.x,player1.y,25,25);
 }
 
 function drawPlayers() {
@@ -30,28 +30,32 @@ function drawPlayers() {
 			console.log('WALL!');
 		}else{
 			// If no collision continue
-			player1.x += 10;
+			ctx.fillRect(player1.x,player1.y + 12,15,3);
+			player1.x += 5;
 		}
 	} else if (leftKey) {		
 		if(player1.x < 0){
 			player1.x -= 0;
 			console.log('WALL!');
 		}else{
-			player1.x -= 10;
+			ctx.fillRect(player1.x + 15,player1.y + 12,15,3);
+			player1.x -= 5;
 		}
 	} else if (upKey){
 		if(player1.y < 0){
 			player1.y -= 0;
 			console.log('WALL!');
 		}else{
-			player1.y -= 10;
+			ctx.fillRect(player1.x + 10,player1.y + 10,3,15);
+			player1.y -= 5;
 		}
 	}	else if (downKey){
 		if(player1.y > 525){
 			player1.y -= 0;
 			console.log('WALL!');
 		}else{
-			player1.y += 10;
+			ctx.fillRect(player1.x + 10,player1.y - 5,3,15);
+			player1.y += 5;
 		}
 	}
 	ctx.fillRect(player1.x,player1.y,player1.width,player1.height);
@@ -68,33 +72,48 @@ function drawPlayers() {
 	}
 }
 
-
-
 function loop() {
 	clearCanvas();
 	drawPlayers();
 }
 
 function keyDown(e) {
-	if (e.keyCode == 39) rightKey = true;
-	else if (e.keyCode == 37) leftKey = true;
-	else if (e.keyCode == 38) upKey = true;
-	else if (e.keyCode == 40) downKey = true;
+	if (e.keyCode == 39){
+		rightKey = true;
+		leftKey = false;
+		upKey = false;
+		downKey = false;
+	}else if (e.keyCode == 37){
+		rightKey = false;
+		leftKey = true;
+		upKey = false;
+		downKey = false;
+	}else if (e.keyCode == 38){
+		rightKey = false;
+		leftKey = false;
+		upKey = true;
+		downKey = false;
+	}else if (e.keyCode == 40){
+		rightKey = false;
+		leftKey = false;
+		upKey = false;
+		downKey = true;
+	}
 }
 
-function keyUp(e) {
-	if (e.keyCode == 39) rightKey = false;
-	else if (e.keyCode == 37) leftKey = false;
-	else if (e.keyCode == 38) upKey = false;
-	else if (e.keyCode == 40) downKey = false;
-}
+// function keyUp(e) {
+// 	if (e.keyCode == 39) rightKey = false;
+// 	else if (e.keyCode == 37) leftKey = false;
+// 	else if (e.keyCode == 38) upKey = false;
+// 	else if (e.keyCode == 40) downKey = false;
+// }
 
 (function init() {
 	canvas = document.getElementById('canvas');
 	ctx = canvas.getContext('2d');
 	setInterval(loop, 1000/30);
 	document.addEventListener('keydown', keyDown, false);
-	document.addEventListener('keyup', keyUp, false);
+	// document.addEventListener('keyup', keyUp, false);
 })();
 
 
