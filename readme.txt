@@ -1,1 +1,4 @@
-Something will go here
+To Do:
+
+Collisions with tails
+Connected Tails
