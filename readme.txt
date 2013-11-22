@@ -1,5 +1,5 @@
 To Do:
-
-Fix bugs with collisions with tails
-Connected Tails
-Player scrores
+Integrate Box2D
+Add Box2D collisions
+Add lightcycle trails
+Add player scrores
