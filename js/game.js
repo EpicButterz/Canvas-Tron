@@ -46,7 +46,7 @@ game = {
 				color: '#9ddde0'
 			}
 		}
-	],
+	]
 };
 function reset(){
 	
